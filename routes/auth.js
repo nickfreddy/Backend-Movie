@@ -2,12 +2,12 @@
 const express = require("express");
 
 // Import auth
-const { register, signin } = require("../middlewares/auth");
+const { register, login, logout } = require("../middlewares/auth");
 
 // Import validator
 const {
   registerValidator,
-  signInValidator,
+  logInValidator,
 } = require("../middlewares/validators/auth");
 
 // Import controller
@@ -18,7 +18,8 @@ const router = express.Router();
 
 // Make routes
 router.post("/register", registerValidator, register, getToken);
-router.post("/signin", signInValidator, signin, getToken);
+router.post("/login", logInValidator, login, getToken);
+router.get("/logout", logout);
 
 // Exports
 module.exports = router;

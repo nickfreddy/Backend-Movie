@@ -5,10 +5,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development npx nodemon index",
-    "seed:dev": "NODE_ENV=development node seeders add",
-    "seed:dev:remove": "NODE_ENV=development node seeders remove",
-    "seed:test": "NODE_ENV=test node seeders add",
-    "seed:test:remove": "NODE_ENV=test node seeders remove",
     "test": "NODE_ENV=test jest --testTimeout=20000 --coverage --forceExit"
   },
   "repository": {

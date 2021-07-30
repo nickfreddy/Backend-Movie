@@ -2,13 +2,13 @@
 const express = require("express");
 
 // Import auth
-const { admin, user } = require("../middlewares/auth");
+const { admin, user, adminOrUser } = require("../middlewares/auth");
 
 // Import validator
 const {
   createOrUpdateReviewValidator,
-  getDetailReview,
-} = require("../middlewares/validators/review");
+  getDetailValidator,
+} = require("../middlewares/validators/reviews");
 
 // Import controller
 const {
@@ -17,7 +17,7 @@ const {
   getDetailReview,
   updateReview,
   deleteReview,
-} = require("../controllers/review");
+} = require("../controllers/reviews");
 
 // Make router
 const router = express.Router();
@@ -26,7 +26,7 @@ const router = express.Router();
 router.post("/", createOrUpdateReviewValidator, createReview);
 router.get("/", getAllReview);
 
-router.get("/:id", getDetailReview, getDetailReview);
+router.get("/:id", getDetailValidator, getDetailReview);
 router.put("/:id", createOrUpdateReviewValidator, updateReview);
 router.delete("/:id", deleteReview);
 

@@ -42,9 +42,9 @@ passport.use(
   )
 );
 
-// Logic to signin
-exports.signin = (req, res, next) => {
-  passport.authenticate("signin", { session: false }, (err, user, info) => {
+// Logic to login
+exports.login = (req, res, next) => {
+  passport.authenticate("login", { session: false }, (err, user, info) => {
     if (err) {
       return next({ message: err.message, statusCode: 401 });
     }
@@ -60,7 +60,7 @@ exports.signin = (req, res, next) => {
 };
 
 passport.use(
-  "signin",
+  "login",
   new LocalStrategy(
     {
       usernameField: "email",
@@ -128,3 +128,89 @@ passport.use(
     }
   )
 );
+
+// Logic for user
+exports.user = (req, res, next) => {
+  passport.authorize("user", { session: false }, (err, user, info) => {
+    if (err) {
+      return next({ message: err.message, statusCode: 403 });
+    }
+
+    if (!user) {
+      return next({ message: info.message, statusCode: 403 });
+    }
+
+    req.user = user;
+
+    next();
+  })(req, res, next);
+};
+
+passport.use(
+  "user",
+  new JWTstrategy(
+    {
+      secretOrKey: process.env.JWT_SECRET,
+      jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+    },
+    async (token, done) => {
+      try {
+        const data = await user.findOne({ _id: token.user });
+
+        if (data.role === "user") {
+          return done(null, token);
+        }
+
+        return done(null, false, { message: "Forbidden access" });
+      } catch (error) {
+        return done(error, false, { message: "Forbidden access" });
+      }
+    }
+  )
+);
+
+// Logic for admin or user
+exports.adminOrUser = (req, res, next) => {
+  passport.authorize("adminOrUser", { session: false }, (err, user, info) => {
+    if (err) {
+      return next({ message: err.message, statusCode: 403 });
+    }
+
+    if (!user) {
+      return next({ message: info.message, statusCode: 403 });
+    }
+
+    req.user = user;
+
+    next();
+  })(req, res, next);
+};
+
+passport.use(
+  "adminOrUser",
+  new JWTstrategy(
+    {
+      secretOrKey: process.env.JWT_SECRET,
+      jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+    },
+    async (token, done) => {
+      try {
+        const data = await user.findOne({ _id: token.user });
+
+        if (data.role === "admin" || data.role === "user") {
+          return done(null, token);
+        }
+
+        return done(null, false, { message: "Forbidden access" });
+      } catch (error) {
+        return done(error, false, { message: "Forbidden access" });
+      }
+    }
+  )
+);
+
+// Logic to logout
+exports.logout = function (req, res) {
+  req.logOut();
+  res.redirect("/");
+};

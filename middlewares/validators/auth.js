@@ -22,7 +22,7 @@ exports.registerValidator = async (req, res, next) => {
   }
 };
 
-exports.signInValidator = async (req, res, next) => {
+exports.logInValidator = async (req, res, next) => {
   try {
     const errorMessages = [];
 
