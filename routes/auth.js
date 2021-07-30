@@ -2,11 +2,11 @@
 const express = require("express");
 
 // Import auth
-const { signup, signin } = require("../middlewares/auth");
+const { register, signin } = require("../middlewares/auth");
 
 // Import validator
 const {
-  signUpValidator,
+  registerValidator,
   signInValidator,
 } = require("../middlewares/validators/auth");
 
@@ -17,7 +17,7 @@ const { getToken } = require("../controllers/auth");
 const router = express.Router();
 
 // Make routes
-router.post("/signup", signUpValidator, signup, getToken);
+router.post("/register", registerValidator, register, getToken);
 router.post("/signin", signInValidator, signin, getToken);
 
 // Exports
