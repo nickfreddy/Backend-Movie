@@ -5,9 +5,9 @@ const JWTstrategy = require("passport-jwt").Strategy; // to enable jwt in passpo
 const ExtractJWT = require("passport-jwt").ExtractJwt; // to extract or read jwt
 const { user } = require("../../models"); // Import user
 
-// Logic to signup
-exports.signup = (req, res, next) => {
-  passport.authenticate("signup", { session: false }, (err, user, info) => {
+// Logic to register
+exports.register = (req, res, next) => {
+  passport.authenticate("register", { session: false }, (err, user, info) => {
     if (err) {
       return next({ message: err.message, statusCode: 401 });
     }
@@ -23,7 +23,7 @@ exports.signup = (req, res, next) => {
 };
 
 passport.use(
-  "signup",
+  "register",
   new LocalStrategy(
     {
       usernameField: "email",

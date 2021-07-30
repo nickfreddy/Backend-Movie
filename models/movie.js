@@ -27,7 +27,7 @@ const movieSchema = new mongoose.Schema(
       required: true,
     },
     rating: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId, // Movie should be float. Movie rating must have default until we get enough review ratings.
       ref: "rating",
     },
     reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "review" }],

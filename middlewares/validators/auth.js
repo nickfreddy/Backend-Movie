@@ -1,6 +1,6 @@
 const validator = require("validator");
 
-exports.signUpValidator = async (req, res, next) => {
+exports.registerValidator = async (req, res, next) => {
   try {
     const errorMessages = [];
 
