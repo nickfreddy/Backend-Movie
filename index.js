@@ -8,6 +8,7 @@ const app = express(); // Make express app
 
 /* Import routes */
 // INSERT CODE HERE
+const review = require("./routes/review");
 
 /* Import errorHander */
 const errorHandler = require("./middlewares/errorHandler");
@@ -29,6 +30,7 @@ app.use(express.static("public"));
 
 /* Use the routes */
 // INSERT CODE HERE
+app.use("/review", review);
 
 /* If route not found */
 app.all("*", (req, res, next) => {
