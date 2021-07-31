@@ -7,7 +7,6 @@
 
 const validator = require("validator");
 const mongoose = require("mongoose");
-const { good, customer } = require("../../models");
 
 exports.getDetailValidator = async (req, res, next) => {
   try {
@@ -26,12 +25,14 @@ exports.createOrUpdateUserValidator = async (req, res, next) => {
     /* Validate the user input */
     const errorMessages = [];
 
-    if (!validator.isLength(req.body.name, { min: 1, max: undefined })) {
+    if (req.body.username === "") {
       errorMessages.push("name cannot be empty");
     }
 
-    if (!validator.isEmail(req.body.email)) {
-      errorMessages.push("email cannot be empty");
+    if (req.body.email) {
+      if (!validator.isEmail(req.body.email)) {
+        errorMessages.push("email is not valid");
+      }
     }
 
     if (errorMessages.length > 0) {
