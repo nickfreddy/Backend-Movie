@@ -6,9 +6,10 @@ const movieSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    genre: [
-      { type: mongoose.Schema.Types.ObjectId, require: true, ref: "category" },
-    ],
+    genres: {
+      type: String,
+      enum: ["action", "romance", "comedy", "anime"],
+    },
     release_year: {
       type: String,
       required: false,
@@ -25,10 +26,6 @@ const movieSchema = new mongoose.Schema(
     synopsis: {
       type: String,
       required: true,
-    },
-    rating: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "rating",
     },
     review: [{ type: mongoose.Schema.Types.ObjectId, ref: "review" }],
   },
