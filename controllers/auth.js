@@ -8,7 +8,7 @@ class User {
       };
       const token = jwt.sign(data, process.env.JWT_SECRET);
 
-      res.status(200).json({ token });
+      res.status(200).json({ _id: req.user._id, token });
     } catch (error) {
       next(error);
     }
