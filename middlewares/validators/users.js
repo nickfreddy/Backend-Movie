@@ -1,10 +1,5 @@
 // Adib's Code
 
-// create => same as auth register
-// read => check if username exists
-// update => check if the updater is the same user, or admin
-// delete => check if deleter is the same user, or admin
-
 const validator = require("validator");
 const mongoose = require("mongoose");
 
@@ -39,15 +34,6 @@ exports.createOrUpdateUserValidator = async (req, res, next) => {
       return next({ messages: errorMessages, statusCode: 400 });
     }
 
-    next();
-  } catch (error) {
-    next(error);
-  }
-};
-
-exports.isSameUser = async (req, res, next) => {
-  try {
-    console.log(req.user);
     next();
   } catch (error) {
     next(error);
