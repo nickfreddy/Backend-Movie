@@ -19,7 +19,6 @@ const router = express.Router();
 // Make routes
 router.post("/register", registerValidator, register, getToken);
 router.post("/login", logInValidator, login, getToken);
-router.get("/logout", logout);
 
 // Exports
 module.exports = router;

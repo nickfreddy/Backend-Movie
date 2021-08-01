@@ -44,3 +44,12 @@ exports.createOrUpdateUserValidator = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.isSameUser = async (req, res, next) => {
+  try {
+    console.log(req.user);
+    next();
+  } catch (error) {
+    next(error);
+  }
+};

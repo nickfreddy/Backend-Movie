@@ -1,8 +1,16 @@
 // Adib's Code
 const express = require("express");
+const multer = require("multer");
+const { storage } = require("../cloudinary");
+const upload = multer({ storage });
 
 // Import auth
-const { admin, user, adminOrUser } = require("../middlewares/auth");
+const {
+  admin,
+  user,
+  adminOrUser,
+  adminOrSameUser,
+} = require("../middlewares/auth");
 
 // Import validator
 const {
@@ -22,8 +30,16 @@ const router = express.Router();
 
 // Make some routes
 router.get("/:id", getDetailValidator, getDetailUser);
-router.put("/:id", createOrUpdateUserValidator, updateUser); // missing isSameUser validator
-router.delete("/:id", deleteUser); // missing isSameUser validator
+
+router.put(
+  "/:id",
+  adminOrSameUser,
+  createOrUpdateUserValidator,
+  upload.single("photo"),
+  updateUser
+);
+
+router.delete("/:id", adminOrSameUser, deleteUser);
 
 // Exports
 module.exports = router;

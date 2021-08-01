@@ -50,6 +50,10 @@ class Users {
   async updateUser(req, res) {
     try {
       // Update data
+      if (req.file) {
+        req.body.photo = req.file.path;
+      }
+
       let data = await user.findOneAndUpdate(
         {
           _id: req.params.id,
@@ -59,6 +63,7 @@ class Users {
           new: true,
         }
       );
+
       // new is to return the updated user data
       // If no new, it will return the old data before updated
 

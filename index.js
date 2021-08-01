@@ -25,7 +25,7 @@ app.use(
 );
 
 /* Enable req.body and req.files (form-data) */
-app.use(fileUpload());
+// app.use(fileUpload());
 
 /* Make public folder for static file */
 app.use(express.static("public"));
