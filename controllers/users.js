@@ -6,7 +6,7 @@ const { user } = require("../models/");
 class Users {
   async getAllUsers(req, res, next) {
     try {
-      let data = await user.find().populate("supplier");
+      let data = await user.find();
 
       if (data.length === 0) {
         return next({ message: "Users not found", statusCode: 404 });
@@ -26,7 +26,7 @@ class Users {
         return next({ message: "User not found", statusCode: 404 });
       }
 
-      res.status(200).json({ data });
+      res.status(200).json(data);
     } catch (error) {
       next(error);
     }
@@ -38,7 +38,7 @@ class Users {
       const newData = await user.create(req.body);
 
       // Find the user has been created
-      let data = await user.findOne({ _id: newData._id }).populate("supplier");
+      let data = await user.findOne({ _id: newData._id });
 
       res.status(201).json({ data });
     } catch (error) {
@@ -50,6 +50,10 @@ class Users {
   async updateUser(req, res) {
     try {
       // Update data
+      if (req.file) {
+        req.body.photo = req.file.path;
+      }
+
       let data = await user.findOneAndUpdate(
         {
           _id: req.params.id,
@@ -59,11 +63,16 @@ class Users {
           new: true,
         }
       );
+
       // new is to return the updated user data
       // If no new, it will return the old data before updated
 
       // If success
-      return res.status(201).json({ data });
+      // return res.status(201).json({ data });
+
+      return res.status(201).json({
+        message: `User ${req.params.id} detail is updated.`,
+      });
     } catch (error) {
       next(error);
     }
@@ -76,7 +85,7 @@ class Users {
       await user.delete({ _id: req.params.id });
 
       return res.status(200).json({
-        message: `Delete successful for object ${req.params.id}`,
+        message: `User ${req.params.id} is deleted successfully`,
       });
     } catch (error) {
       next(error);

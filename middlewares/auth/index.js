@@ -209,8 +209,53 @@ passport.use(
   )
 );
 
-// Logic to logout
-exports.logout = function (req, res) {
-  req.logOut();
-  res.redirect("/");
+exports.adminOrSameUser = (req, res, next) => {
+  passport.authorize(
+    "adminOrSameUser",
+    { session: false },
+    (err, user, info) => {
+      if (err) {
+        return next({ message: err.message, statusCode: 403 });
+      }
+
+      if (!user) {
+        return next({ message: info.message, statusCode: 403 });
+      }
+
+      if (info.message == "user" && user.user !== req.params.id) {
+        return next({ message: "Forbidden access", statusCode: 403 });
+      }
+
+      req.user = user;
+
+      next();
+    }
+  )(req, res, next);
 };
+
+passport.use(
+  "adminOrSameUser",
+  new JWTstrategy(
+    {
+      secretOrKey: process.env.JWT_SECRET,
+      jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+    },
+    async (token, done) => {
+      try {
+        const data = await user.findOne({ _id: token.user });
+
+        if (data.role === "admin") {
+          return done(null, token, { message: "admin" });
+        }
+
+        if (data.role === "user") {
+          return done(null, token, { message: "user" });
+        }
+
+        return done(null, false, { message: "Forbidden access" });
+      } catch (error) {
+        return done(error, false, { message: "Forbidden access" });
+      }
+    }
+  )
+);
