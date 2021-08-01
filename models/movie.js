@@ -8,7 +8,7 @@ const movieSchema = new mongoose.Schema(
       required: true,
     },
     genres: {
-      type: String,
+      type: [String],
       enum: ["action", "romance", "comedy", "anime"],
     },
     release_year: {

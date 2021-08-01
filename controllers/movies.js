@@ -68,11 +68,11 @@ class Movie {
   }
 
   async getMovieByGenre(req, res, next) {
-    const getGenre = req.params.genres;
-    const pageSize = 15;
-    const currentPage = req.query.page;
-
     try {
+      const getGenre = req.body.genres;
+      const pageSize = 15;
+      const currentPage = req.query.page;
+
       const dataMovie = await movie
         .find({ genres: getGenre })
         .skip(pageSize * (currentPage - 1))
@@ -136,7 +136,7 @@ class Movie {
 
   async deleteMovie(req, res, next) {
     try {
-      const dataMovie = await movie.delete({ _id: req.params.id });
+      const dataMovie = await movie.deleteById({ _id: req.params.id });
 
       if (dataMovie.n === 0) {
         return next({ message: "Movie not found", statusCode: 404 });
