@@ -8,7 +8,7 @@ const app = express(); // Make express app
 
 /* Import routes */
 const auth = require("./routes/auth");
-// const movies = require("./routes/movies");
+const movies = require("./routes/movies");
 // const reviews = require("./routes/reviews");
 const users = require("./routes/users");
 
@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 
 /* Use the routes */
 app.use("/auth", auth);
-// app.use("/movies", movies);
+app.use("/movies", movies);
 // app.use("/movies/:id/reviews", reviews);
 app.use("/users", users);
 

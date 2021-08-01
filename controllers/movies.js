@@ -24,12 +24,6 @@ class Movie {
         return next({ message: "Movie not found", statusCode: 404 });
       }
 
-      for (let i = 0; i < dataMovie.length; i++) {
-        dataMovie[i].review = await review.findOne({
-          _id: dataMovie[i].review,
-        });
-      }
-
       res.status(200).json({ dataMovie });
     } catch (error) {
       next(error);
@@ -46,7 +40,26 @@ class Movie {
         return next({ message: "Movie not found", statusCode: 404 });
       }
 
-      dataMovie.review = await review.findOne({ _id: dataMovie.review });
+      res.status(200).json({ dataMovie });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getMovieByTitle(req, res, next) {
+    const getTitle = req.params.title;
+    const pageSize = 15;
+    const currentPage = req.query.page;
+    const regex = new RegExp(getTitle, "i");
+    try {
+      const dataMovie = await movie
+        .find({ title: { $regex: regex } })
+        .skip(pageSize * (currentPage - 1))
+        .limit(pageSize);
+
+      if (dataMovie.length === 0) {
+        return next({ message: "Movie not found", statusCode: 404 });
+      }
 
       res.status(200).json({ dataMovie });
     } catch (error) {
@@ -54,15 +67,42 @@ class Movie {
     }
   }
 
-  async getMovieByCategory(req, res, next) {
-    try {
-      const movieCategory = await movie.find({ category: req.params.genres });
+  async getMovieByGenre(req, res, next) {
+    const getGenre = req.params.genres;
+    const pageSize = 15;
+    const currentPage = req.query.page;
 
-      if (!movieCategory) {
+    try {
+      const dataMovie = await movie
+        .find({ genres: getGenre })
+        .skip(pageSize * (currentPage - 1))
+        .limit(pageSize);
+
+      if (dataMovie.length === 0) {
         return next({ message: "Movie not found", statusCode: 404 });
       }
 
-      res.status(200).json({ movieCategory });
+      res.status(200).json({ dataMovie });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getMoviePagination(req, res, next) {
+    const pageSize = 15;
+    const currentPage = req.query.page;
+
+    try {
+      const dataMovie = await movie
+        .find()
+        .skip(pageSize * (currentPage - 1))
+        .limit(pageSize);
+
+      if (dataMovie.length === 0) {
+        return next({ message: "Movie not found", statusCode: 404 });
+      }
+
+      res.status(200).json({ dataMovie });
     } catch (error) {
       next(error);
     }
@@ -102,7 +142,7 @@ class Movie {
         return next({ message: "Movie not found", statusCode: 404 });
       }
 
-      res.status(200).json({ message: "Movie has been deleted" });
+      res.status(200).json({ dataMovie, message: "Movie has been deleted" });
     } catch (error) {
       next(error);
     }

@@ -2,10 +2,13 @@
 const express = require("express");
 
 // Import auth
-const { admin } = require("../middlewares/auth");
+const { admin, user, adminOrUser } = require("../middlewares/auth");
 
 // Import validator
-const { movieValidator } = require("../middlewares/validators/movies");
+// const {
+//   getDetailValidator,
+//   movieValidator,
+// } = require("../middlewares/validators/movies");
 
 // Import controller
 const {
@@ -14,20 +17,24 @@ const {
   getDetailMovie,
   updateMovie,
   deleteMovie,
-  getMovieByCategory,
+  getMovieByTitle,
 } = require("../controllers/movies");
 
 // Router
 const router = express.Router();
 
 // Make some routes
-router.route("/movies").get(getAllMovie).post(movieValidator, createMovie);
+router
+  .route("/movies")
+  .get(getAllMovie)
+  .post(/* movieValidator, */ createMovie);
+
 router
   .route("/movie/:id")
-  .get(getDetailMovie)
-  .put(updateMovie)
+  .get(/* getDetailValidator, */ getDetailMovie)
+  .put(/* movieValidator, */ updateMovie)
   .delete(deleteMovie);
-router.route("/movie/:genres").get(getMovieByCategory);
+router.route("/movie/:title").get(getMovieByTitle);
 
 // Exports
 module.exports = router;

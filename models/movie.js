@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const mongooseDelete = require("mongoose-delete");
 
 const movieSchema = new mongoose.Schema(
   {
@@ -28,19 +29,25 @@ const movieSchema = new mongoose.Schema(
       required: true,
     },
     rating: {
-      type: mongoose.Schema.Types.ObjectId, // Movie should be float. Movie rating must have default until we get enough review ratings.
-      ref: "rating",
+      type: mongoose.Schema.Types.Number,
+      ref: "review",
+      default: 0,
+      get: getRating,
     },
-    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "review" }],
   },
   {
     timestamps: {
       createdAt: "createdAt",
       updatedAt: "updatedAt",
     },
-    toJSON: { getters: true },
+    toObject: { getters: true },
+    toJSON: { getters: true, versionKey: false },
   }
 );
+
+function getRating(rate) {
+  return Math.round(10 / (rate * 10));
+}
 
 function getPoster(poster) {
   if (!poster || poster.includes("https") || poster.includes("http")) {
@@ -50,4 +57,5 @@ function getPoster(poster) {
   return `/images/poster/${poster}`;
 }
 
+movieSchema.plugin(mongooseDelete, { overrideMethods: "all" });
 module.exports = mongoose.model("movie", movieSchema);
