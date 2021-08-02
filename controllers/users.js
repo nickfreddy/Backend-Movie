@@ -1,6 +1,5 @@
 // Adib's Code
 
-// If a user is deleted, delete his reviews as well
 const { user, review } = require("../models/");
 
 class Users {
@@ -20,7 +19,16 @@ class Users {
 
   async getDetailUser(req, res, next) {
     try {
-      const reviewData = await review.find({ user_id: req.params.id });
+      const page = req.query.page;
+      const limit = parseInt(req.query.limit) || 0;
+      const skip = page > 0 ? (page - 1) * limit : 0;
+
+      const reviewData = await review
+        .find({ user_id: req.params.id })
+        .limit(limit)
+        .skip(skip);
+
+      console.log(req.query.limit);
       let data = await user.findById(req.params.id);
       data.reviews.push(...reviewData);
 
