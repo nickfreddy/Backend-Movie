@@ -30,7 +30,6 @@ const movieSchema = new mongoose.Schema(
     },
     rating: {
       type: mongoose.Schema.Types.Number,
-      ref: "review",
       default: 0,
       get: getRating,
     },
