@@ -7,10 +7,13 @@ const movieSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    genres: {
-      type: [String],
-      enum: ["action", "romance", "comedy", "anime"],
-    },
+    genres: [
+      {
+        type: String,
+        enum: ["action", "romance", "comedy", "anime"],
+        required: true,
+      },
+    ],
     release_year: {
       type: String,
       required: false,
@@ -28,9 +31,9 @@ const movieSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    rating: {
+    average_rating: {
       type: mongoose.Schema.Types.Number,
-      default: 0,
+      default: null,
       // get: getRating,
     },
     review: [
