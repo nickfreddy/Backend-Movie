@@ -8,7 +8,6 @@ const { admin, user, adminOrUser } = require("../middlewares/auth");
 const {
   getDetailValidator,
   movieValidator,
-  updateMovieValidator,
 } = require("../middlewares/validators/movies");
 
 // Import controller
@@ -19,6 +18,8 @@ const {
   updateMovie,
   deleteMovie,
   getMovieByTitle,
+  getMovieByGenre,
+  getMoviePagination,
 } = require("../controllers/movies");
 
 // Router
@@ -26,16 +27,18 @@ const router = express.Router();
 
 // Make some routes
 router
-  .route("/movies")
+  .route("/")
+  .get(getMoviePagination)
   .get(getAllMovie)
-  .post(/* movieValidator ,*/ createMovie);
+  .post(movieValidator, createMovie);
 
+router.route("/search").get(getMovieByTitle);
+router.route("/genres/:genres").get(getMovieByGenre);
 router
-  .route("/movie/:id")
+  .route("/:id")
   .get(/* getDetailValidator ,*/ getDetailMovie)
-  .put(/* movieValidator, updateMovieValidator, */ updateMovie)
+  .put(/* movieValidator,*/ updateMovie)
   .delete(deleteMovie);
-router.route("/movie/:title").get(getMovieByTitle);
 
 // Exports
 module.exports = router;

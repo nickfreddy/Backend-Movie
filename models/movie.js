@@ -31,7 +31,7 @@ const movieSchema = new mongoose.Schema(
     rating: {
       type: mongoose.Schema.Types.Number,
       default: 0,
-      get: getRating,
+      // get: getRating,
     },
     review: [
       {
@@ -50,9 +50,9 @@ const movieSchema = new mongoose.Schema(
   }
 );
 
-function getRating(rate) {
-  return Math.round(10 / (rate * 10));
-}
+// function getRating(rate) {
+//   return Math.round(10 / (rate * 10));
+// }
 
 function getPoster(poster) {
   if (!poster || poster.includes("https") || poster.includes("http")) {

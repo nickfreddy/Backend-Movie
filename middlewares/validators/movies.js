@@ -1,7 +1,7 @@
 // Bayu's Code
 const validator = require("validator");
 const mongoose = require("mongoose");
-const movie = require("../../models/movie");
+const { movie } = require("../../models");
 
 exports.getDetailValidator = async (req, res, next) => {
   try {
@@ -15,6 +15,22 @@ exports.getDetailValidator = async (req, res, next) => {
   }
 };
 
+// exports.limitAndPageValidator = async (req, res, next) => {
+//   if (!validator.isInt(req.query.page))
+//     return next({ status: 400, message: "Offset must be an integer" });
+
+//   if (req.query.page < 0)
+//     return next({
+//       status: 400,
+//       message: "Offset must be a non-negative integer",
+//     });
+//   if (req.query.limit < 1)
+//     return next({
+//       status: 400,
+//       message: "Limit must be greater than 0",
+//     });
+// };
+
 exports.movieValidator = async (req, res, next) => {
   try {
     const errorMessages = [];
@@ -25,6 +41,13 @@ exports.movieValidator = async (req, res, next) => {
 
     if (validator.isEmpty(req.body.synopsis)) {
       errorMessages.push("Synopsis cannot be empty!");
+    }
+
+    if (!Array.isArray([req.body.genres])) {
+      errorMessages.push("Genre not Found");
+      if (validator.isEmpty(req.body.genres)) {
+        errorMessages.push("Genre cannot be empty!");
+      }
     }
 
     if (
@@ -50,19 +73,6 @@ exports.movieValidator = async (req, res, next) => {
 
     if (errorMessages.length > 0) {
       return next({ messages: errorMessages, statusCode: 400 });
-    }
-  } catch (error) {
-    next(error);
-  }
-};
-
-exports.updateMovieValidator = async (req, res, next) => {
-  try {
-    const errorMessages = [];
-
-    const dataMovie = await movie.findById(req.params.id);
-    if (!dataMovie) {
-      errorMessages.push("Movie not found!");
     }
   } catch (error) {
     next(error);
