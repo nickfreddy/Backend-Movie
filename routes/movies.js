@@ -29,14 +29,14 @@ const router = express.Router();
 router
   .route("/")
   .get(getMoviePagination)
-  .get(adminOrUser, getAllMovie)
+  .get(getAllMovie)
   .post(admin, movieValidator, createMovie);
 
 router.route("/search").get(getMovieByTitle);
 router.route("/genres/:genres").get(getMovieByGenre);
 router
   .route("/:id")
-  .get(adminOrUser, getDetailValidator, getDetailMovie)
+  .get(getDetailValidator, getDetailMovie)
   .put(admin, movieValidator, updateMovie)
   .delete(admin, deleteMovie);
 

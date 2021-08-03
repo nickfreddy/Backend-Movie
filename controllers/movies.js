@@ -9,7 +9,7 @@ class Movie {
 
       const dataMovie = await movie
         .findOne({ _id: newMovie._id })
-        .populate("review");
+        .populate("reviews");
 
       res.status(201).json({ message: "Successfully created movie" });
     } catch (error) {
@@ -33,15 +33,12 @@ class Movie {
 
   async getDetailMovie(req, res, next) {
     try {
-      const pageSize = parseInt(req.query.limit) || 15;
-      const currentPage = req.query.page;
+      const CommentLimit = parseInt(req.query.limit) || 10;
 
       const dataMovie = await movie
-        .findOne({ _id: req.params.id })
-        .populate("review")
-        .skip(pageSize * (currentPage - 1))
-        .limit(pageSize)
-        .sort("-created");
+        .find({ _id: req.params.id })
+        .populate("reviews")
+        .limit(CommentLimit);
 
       if (!dataMovie) {
         return next({ message: "Movie not found", statusCode: 404 });
