@@ -1,0 +1,481 @@
+[{
+  "_id": {
+    "$oid": "6106ba258278ce1864d5c199"
+  },
+  "genres": [
+    "action"
+  ],
+  "rating": 4,
+  "title": "Avenger: End Game",
+  "release_year": "2020",
+  "poster": "https://lumiere-a.akamaihd.net/v1/images/p_avengersendgame_19751_e14a0104.jpeg?region=0%2C0%2C540%2C810",
+  "trailer": "https://youtu.be/TcMBFSGVi1c",
+  "synopsis": "After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.",
+  "createdAt": {
+    "$date": "2021-08-01T15:13:41.954Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T06:43:06.748Z"
+  },
+  "review": [
+    {
+      "$oid": "610748511693f285f47d5f70"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106ba988278ce1864d5c19c"
+  },
+  "genres": [
+    "action"
+  ],
+  "rating": 4,
+  "title": "Black Widow",
+  "release_year": "2021",
+  "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHAtPQrkBhk5KiqU87UJPOerOJNO4JZU2C0lBLQ4pzJFP1mnY0",
+  "trailer": "https://youtu.be/kteX1JAE2iw",
+  "synopsis": "Natasha Romanoff, aka Black Widow, confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises. Pursued by a force that will stop at nothing to bring her down, Natasha must deal with her history as a spy, and the broken relationships left in her wake long before she became an Avenger.",
+  "createdAt": {
+    "$date": "2021-08-01T15:15:36.967Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T06:45:08.609Z"
+  },
+  "review": [
+    {
+      "$oid": "610748511693f285f47d5f6b"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106bcc78278ce1864d5c1a8"
+  },
+  "genres": [
+    "action"
+  ],
+  "rating": 4,
+  "title": "Enola Holmes",
+  "release_year": "2020",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/riYInlsq2kf1AWoGm80JQW5dLKp.jpg",
+  "trailer": "https://youtu.be/1d0Zf9sXlHk",
+  "synopsis": "While searching for her missing mother, intrepid teen Enola Holmes uses her sleuthing skills to outsmart big brother Sherlock and help a runaway lord.",
+  "createdAt": {
+    "$date": "2021-08-01T15:24:55.465Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T06:49:17.101Z"
+  },
+  "review": [
+    {
+      "$oid": "61077e441693f285f47d5f79"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106ea731f8da01a3037414e"
+  },
+  "genres": [
+    "action"
+  ],
+  "rating": 4,
+  "title": "The Tomorrow War",
+  "release_year": "2021",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/34nDCQZwaEvsy4CFO5hkGRFDCVU.jpg",
+  "trailer": "https://youtu.be/LnIbOiskSdc",
+  "synopsis": "The world is stunned when a group of time travellers arrive from the year 2051 to deliver an urgent message: thirty years in the future, mankind is losing a global war against a deadly alien species.",
+  "createdAt": {
+    "$date": "2021-08-01T18:39:47.468Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T06:55:02.794Z"
+  },
+  "review": [
+    {
+      "$oid": "61077e441693f285f47d5f7c"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106ec601f8da01a30374153"
+  },
+  "genres": [
+    "action"
+  ],
+  "rating": 4,
+  "title": "Zack Snyder's Justice League",
+  "release_year": "2021",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg",
+  "trailer": "https://youtu.be/ui37YKQ9AC4",
+  "synopsis": "Bruce Wayne and Diana Prince try to bring the metahumans of Earth together after the death of Clark Kent. Meanwhile, Darkseid sends Steppenwolf to Earth with a vast army to subjugate humans.",
+  "createdAt": {
+    "$date": "2021-08-01T18:48:00.830Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T06:57:57.563Z"
+  },
+  "review": [
+    {
+      "$oid": "61077e441693f285f47d5f81"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106edfc1f8da01a30374156"
+  },
+  "genres": [
+    "romance"
+  ],
+  "rating": 4,
+  "title": "The Aeronauts",
+  "release_year": "2019",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kZHnblqmTBUBgzYBIxWIz9txsEi.jpg",
+  "trailer": "https://www.youtube.com/watch?v=Rm4VnwCtQO8",
+  "synopsis": "In 1862 headstrong scientist James Glaisher and wealthy young widow Amelia Wren mount a balloon expedition to fly higher than anyone in history. As their perilous ascent reduces their chances of survival, the unlikely duo soon discover things about themselves -- and each other -- that help both of them find their place in the world.",
+  "createdAt": {
+    "$date": "2021-08-01T18:54:52.399Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:04:04.031Z"
+  },
+  "review": [
+    {
+      "$oid": "610748511693f285f47d5f6a"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106ef111f8da01a30374159"
+  },
+  "genres": [
+    "romance"
+  ],
+  "rating": 5,
+  "title": "Five Feet Apart",
+  "release_year": "2019",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kreTuJBkUjVWePRfhHZuYfhNE1T.jpg",
+  "trailer": "https://www.youtube.com/watch?v=24YrEAGF32M",
+  "synopsis": "Seventeen-year-old Stella spends most of her time in the hospital as a cystic fibrosis patient. Her life is full of routines, boundaries and self-control -- all of which get put to the test when she meets Will, an impossibly charming teen who has the same illness. There's an instant flirtation, though restrictions dictate that they must maintain a safe distance between them. As their connection intensifies, so does the temptation to throw the rules out the window and embrace that attraction.",
+  "createdAt": {
+    "$date": "2021-08-01T18:59:29.963Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:14:16.576Z"
+  },
+  "review": [
+    {
+      "$oid": "610748511693f285f47d5f6c"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106efe11f8da01a3037415c"
+  },
+  "genres": [
+    "romance"
+  ],
+  "rating": 4,
+  "title": "A Star Is Born",
+  "release_year": "2018",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wrFpXMNBRj2PBiN4Z5kix51XaIZ.jpg",
+  "trailer": "https://www.youtube.com/watch?v=ykCu1himOK8",
+  "synopsis": "After falling in love with struggling artist Ally, Jackson, a musician, coaxes her to follow her dreams, while he battles with alcoholism and his personal demons.",
+  "createdAt": {
+    "$date": "2021-08-01T19:02:57.513Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:18:55.697Z"
+  },
+  "review": [
+    {
+      "$oid": "610748511693f285f47d5f6f"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106f1811f8da01a30374161"
+  },
+  "genres": [
+    "romance"
+  ],
+  "rating": 4,
+  "title": "After We Collided",
+  "release_year": "2020",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kiX7UYfOpYrMFSAGbI6j1pFkLzQ.jpg",
+  "trailer": "https://www.youtube.com/watch?v=2SvwX3ux_-8",
+  "synopsis": "Tessa finds herself struggling with her complicated relationship with Hardin; she faces a dilemma that could change their lives forever.",
+  "createdAt": {
+    "$date": "2021-08-01T19:09:53.629Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:20:57.837Z"
+  },
+  "review": [
+    {
+      "$oid": "610748511693f285f47d5f70"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106f26a1f8da01a30374164"
+  },
+  "genres": [
+    "romance"
+  ],
+  "rating": 4,
+  "title": "Red Shoes And The Seven Dwarfs",
+  "release_year": "2019",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/MBiKqTsouYqAACLYNDadsjhhC0.jpg",
+  "trailer": "https://youtu.be/NB3mZMyxcM0",
+  "synopsis": "Princes who have been turned into Dwarfs seek the red shoes of a lady in order to break the spell, although it will not be easy.",
+  "createdAt": {
+    "$date": "2021-08-01T19:13:46.360Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:23:54.670Z"
+  },
+  "review": [
+    {
+      "$oid": "610748511693f285f47d5f6b"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106f2f61f8da01a30374167"
+  },
+  "genres": [
+    "comedy"
+  ],
+  "rating": 4,
+  "title": "The Boss Baby: Family Business",
+  "release_year": "2021",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5dExO5G2iaaTxYnLIFKLWofDzyI.jpg",
+  "trailer": "https://youtu.be/QPzy8Ckza08",
+  "synopsis": "The Templeton brothers — Tim and his Boss Baby little bro Ted — have become adults and drifted away from each other. But a new boss baby with a cutting-edge approach and a can-do attitude is about to bring them together again … and inspire a new family business.",
+  "createdAt": {
+    "$date": "2021-08-01T19:16:06.434Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:26:09.869Z"
+  },
+  "review": [
+    {
+      "$oid": "61077e441693f285f47d5f79"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106f3871f8da01a3037416a"
+  },
+  "genres": [
+    "comedy"
+  ],
+  "rating": 4,
+  "title": "Jungle Cruise",
+  "release_year": "2021",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9dKCd55IuTT5QRs989m9Qlb7d2B.jpg",
+  "trailer": "https://youtu.be/f_HvoipFcA8",
+  "synopsis": "Dr. Lily Houghton enlists the aid of wisecracking skipper Frank Wolff to take her down the Amazon in his dilapidated boat. Together, they search for an ancient tree that holds the power to heal – a discovery that will change the future of medicine.",
+  "createdAt": {
+    "$date": "2021-08-01T19:18:31.277Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:28:05.350Z"
+  },
+  "review": [
+    {
+      "$oid": "61077e441693f285f47d5f7b"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106f42b1f8da01a3037416d"
+  },
+  "genres": [
+    "comedy"
+  ],
+  "rating": 4,
+  "title": "Jumanji: The Next Level ",
+  "release_year": "2019",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/jyw8VKYEiM1UDzPB7NsisUgBeJ8.jpg",
+  "trailer": "https://youtu.be/F6QaLsw8EWY",
+  "synopsis": "As the gang return to Jumanji to rescue one of their own, they discover that nothing is as they expect. The players will have to brave parts unknown and unexplored in order to escape the world’s most dangerous game.",
+  "createdAt": {
+    "$date": "2021-08-01T19:21:15.424Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:29:46.877Z"
+  },
+  "review": [
+    {
+      "$oid": "610748511693f285f47d5f6b"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106f4ca1f8da01a30374170"
+  },
+  "genres": [
+    "comedy"
+  ],
+  "rating": 4,
+  "title": "Shazam!",
+  "release_year": "2019",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xnopI5Xtky18MPhK40cZAGAOVeV.jpg",
+  "trailer": "https://youtu.be/go6GEIrcvFY",
+  "synopsis": "A boy is given the ability to become an adult superhero in times of need with a single magic word.",
+  "createdAt": {
+    "$date": "2021-08-01T19:23:54.866Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:31:39.898Z"
+  },
+  "review": [
+    {
+      "$oid": "61077e441693f285f47d5f7c"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106f5741f8da01a30374173"
+  },
+  "genres": [
+    "comedy"
+  ],
+  "rating": 4,
+  "title": "The SpongeBob Movie: Sponge on the Run",
+  "release_year": "2020",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/jlJ8nDhMhCYJuzOw3f52CP1W8MW.jpg",
+  "trailer": "https://youtu.be/NF_yXu7frnI",
+  "synopsis": "When his best friend Gary is suddenly snatched away, SpongeBob takes Patrick on a madcap mission far beyond Bikini Bottom to save their pink-shelled pal.",
+  "createdAt": {
+    "$date": "2021-08-01T19:26:44.378Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:33:09.044Z"
+  },
+  "review": [
+    {
+      "$oid": "61077e441693f285f47d5f80"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106f6641f8da01a30374176"
+  },
+  "genres": [
+    "anime"
+  ],
+  "rating": 5,
+  "title": "Haikyu! The Movie: Battle of Concepts",
+  "release_year": "2017",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xihNhrJnGa04zn9pUr3ZxA8B4ZU.jpg",
+  "trailer": "youtube.com/watch?v=YO4FfmX2FVo",
+  "synopsis": "The Karasuno High boys volleyball team prepares for its final faceoff.",
+  "createdAt": {
+    "$date": "2021-08-01T19:30:44.910Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:34:46.714Z"
+  },
+  "review": [
+    {
+      "$oid": "61077e441693f285f47d5f7d"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106f6f31f8da01a30374179"
+  },
+  "genres": [
+    "anime"
+  ],
+  "rating": 4,
+  "title": "Boruto: Naruto the Movie",
+  "release_year": "2015",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1k6iwC4KaPvTBt1JuaqXy3noZRY.jpg",
+  "trailer": "https://youtu.be/Qyonn5Vbg7s",
+  "synopsis": "The spirited Boruto Uzumaki, son of Seventh Hokage Naruto, is a skilled ninja who possesses the same brashness and passion his father once had. However, the constant absence of his father, who is busy with his Hokage duties, puts a damper on Boruto's fire. He ends up meeting his father's friend Sasuke, and requests to become... his apprentice!? The curtain on the story of the new generation rises!",
+  "createdAt": {
+    "$date": "2021-08-01T19:33:07.715Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:36:29.851Z"
+  },
+  "review": [
+    {
+      "$oid": "61077e441693f285f47d5f80"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106f7911f8da01a3037417c"
+  },
+  "genres": [
+    "anime"
+  ],
+  "rating": 5,
+  "title": "Attack on Titan: The Roar of Awakening",
+  "release_year": "2018",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5tcuowV4HZRxxvDiWn4bmumuZSk.jpg",
+  "trailer": "https://youtu.be/NO079o58Vgg",
+  "synopsis": "Eren Yeager and others of the 104th Training Corps have just begun to become full members of the Survey Corps. As they ready themselves to face the Titans once again, their preparations are interrupted by the invasion of Wall Rose—but all is not as it seems as more mysteries are unraveled. As the Survey Corps races to save the wall, they uncover more about the invading Titans and the dark secrets of their own members.",
+  "createdAt": {
+    "$date": "2021-08-01T19:35:45.599Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:37:52.373Z"
+  },
+  "review": [
+    {
+      "$oid": "610748511693f285f47d5f6b"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106f7f51f8da01a3037417f"
+  },
+  "genres": [
+    "anime"
+  ],
+  "rating": 4,
+  "title": "Goblin Slayer: Goblin's Crown",
+  "release_year": "2020",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oyDaF4za9C9GxfYSyZUmj2aZGJT.jpg",
+  "trailer": "https://youtu.be/Jla7V5uEuF8",
+  "synopsis": "Goblin Slayer and his party head up to the snowy mountains in the north after receiving that request from the Sword Maiden to find any information on the Noble Fencer that disappeared after leaving to slay some goblins. A small village gets attacked, they encounter a mysterious chapel, and something about how these goblins are acting bothers the Goblin slayer. In order to save the captured Noble Fencer, the Goblin Slayer and his party head to an ancient fortress covered in snow to face off with a powerful foe and a horde of goblins!",
+  "createdAt": {
+    "$date": "2021-08-01T19:37:25.637Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:39:18.476Z"
+  },
+  "review": [
+    {
+      "$oid": "610748511693f285f47d5f6a"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6106fa7a1f8da01a30374182"
+  },
+  "genres": [
+    "anime"
+  ],
+  "rating": 5,
+  "title": "Mushoku Tensei: Jobless Reincarnation",
+  "release_year": "2021",
+  "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1mFnzilCyj9Coa9jbN8vFYLEZdW.jpg",
+  "trailer": "https://www.youtube.com/watch?v=OS6KeVt1Ve0",
+  "synopsis": "34-year-old virgin loser is kicked out of his home by his family and realized that his life is completely over. As he regrets wasting his life, a truck runs him over and he died. When he wakes up... He’s in a world of sword and sorcery! Reborn as a baby named Rudeus, he decides that this time, he’ll live a life he won’t regret!",
+  "createdAt": {
+    "$date": "2021-08-01T19:48:10.642Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-02T07:40:40.778Z"
+  },
+  "review": [
+    {
+      "$oid": "610748511693f285f47d5f6b"
+    }
+  ]
+}]

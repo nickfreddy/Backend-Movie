@@ -7,25 +7,25 @@ const movieSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    genres: [
-      {
-        type: String,
-        enum: ["action", "romance", "comedy", "anime"],
-        required: true,
-      },
-    ],
+    genres: {
+      type: [String],
+      required: true,
+    },
     release_year: {
       type: String,
       required: false,
+      default: 0,
     },
     poster: {
       type: String,
       required: false,
-      get: getPoster,
+      default:
+        "https://www.seekpng.com/png/detail/187-1870041_all-these-anonymous-startups-are-interesting-anonymous-logo.png",
     },
     trailer: {
       type: String,
       required: false,
+      default: "https://www.youtube.com/watch?v=htqXL94Rza4",
     },
     synopsis: {
       type: String,
@@ -33,8 +33,8 @@ const movieSchema = new mongoose.Schema(
     },
     averageRating: {
       type: mongoose.Schema.Types.Number,
+      required: false,
       default: null,
-      // get: getRating,
     },
     review: [
       {
@@ -52,18 +52,6 @@ const movieSchema = new mongoose.Schema(
     toJSON: { getters: true, versionKey: false },
   }
 );
-
-function getRating(rate) {
-  return Math.round(10 / (rate * 10));
-}
-
-function getPoster(poster) {
-  if (!poster || poster.includes("https") || poster.includes("http")) {
-    return poster;
-  }
-
-  return `/images/poster/${poster}`;
-}
 
 movieSchema.plugin(mongooseDelete, { overrideMethods: "all" });
 module.exports = mongoose.model("movie", movieSchema);

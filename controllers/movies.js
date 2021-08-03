@@ -4,13 +4,14 @@ const { movie, review } = require("../models");
 class Movie {
   async createMovie(req, res, next) {
     try {
+      req.body.genres = req.body.genres.split(", ");
       const newMovie = await movie.create(req.body);
 
       const dataMovie = await movie
         .findOne({ _id: newMovie._id })
         .populate("review");
 
-      res.status(201).json({ dataMovie });
+      res.status(201).json({ message: "Successfully created movie" });
     } catch (error) {
       next(error);
     }
@@ -32,9 +33,15 @@ class Movie {
 
   async getDetailMovie(req, res, next) {
     try {
+      const pageSize = parseInt(req.query.limit) || 15;
+      const currentPage = req.query.page;
+
       const dataMovie = await movie
         .findOne({ _id: req.params.id })
-        .populate("review");
+        .populate("review")
+        .skip(pageSize * (currentPage - 1))
+        .limit(pageSize)
+        .sort("-created");
 
       if (!dataMovie) {
         return next({ message: "Movie not found", statusCode: 404 });
@@ -47,11 +54,12 @@ class Movie {
   }
 
   async getMovieByTitle(req, res, next) {
-    const getTitle = req.params.title;
-    const pageSize = 15;
-    const currentPage = req.query.page;
-    const regex = new RegExp(getTitle, "i");
     try {
+      const getTitle = req.query.title;
+      const pageSize = parseInt(req.query.limit) || 15;
+      const currentPage = req.query.page;
+      const regex = new RegExp(getTitle, "i");
+
       const dataMovie = await movie
         .find({ title: { $regex: regex } })
         .skip(pageSize * (currentPage - 1))
@@ -69,8 +77,8 @@ class Movie {
 
   async getMovieByGenre(req, res, next) {
     try {
-      const getGenre = req.body.genres;
-      const pageSize = 15;
+      const getGenre = req.params.genres;
+      const pageSize = parseInt(req.query.limit) || 15;
       const currentPage = req.query.page;
 
       const dataMovie = await movie
@@ -89,10 +97,10 @@ class Movie {
   }
 
   async getMoviePagination(req, res, next) {
-    const pageSize = 15;
-    const currentPage = req.query.page;
-
     try {
+      const pageSize = parseInt(req.query.limit) || 15;
+      const currentPage = req.query.page;
+
       const dataMovie = await movie
         .find()
         .skip(pageSize * (currentPage - 1))
@@ -128,7 +136,7 @@ class Movie {
 
       dataMovie.review = await review.findOne({ _id: dataMovie.review });
 
-      return res.status(201).json({ dataMovie });
+      return res.status(201).json({ message: "Successfully updated movie" });
     } catch (error) {
       next(error);
     }
@@ -142,7 +150,7 @@ class Movie {
         return next({ message: "Movie not found", statusCode: 404 });
       }
 
-      res.status(200).json({ dataMovie, message: "Movie has been deleted" });
+      res.status(200).json({ message: "Movie has been deleted" });
     } catch (error) {
       next(error);
     }
