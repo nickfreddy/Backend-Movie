@@ -27,6 +27,7 @@ const userSchema = new mongoose.Schema(
     description: {
       type: String,
       required: false,
+      default: "Hi! nice to meet you!!",
     },
     role: {
       type: String,
