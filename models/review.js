@@ -55,12 +55,12 @@ ReviewSchema.statics.getAverageRating = async function (movie_id) {
   }
 };
 
-// call getAverageCost after save
+// call getAverageRating after save
 ReviewSchema.post("save", function () {
   this.constructor.getAverageRating(this.movie_id);
 });
 
-// call getAverageCost after remove
+// call getAverageRating after remove
 ReviewSchema.post("remove", function () {
   this.constructor.getAverageRating(this.movie_id);
 });

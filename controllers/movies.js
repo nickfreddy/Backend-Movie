@@ -33,21 +33,24 @@ class Movie {
 
   async getDetailMovie(req, res, next) {
     try {
-      const pageSize = parseInt(req.query.limit) || 15;
-      const currentPage = req.query.page;
+      const pageReview = req.query.revpage;
+      const limitReview = parseInt(req.query.revlimit) || 0;
+      const skipReview = pageReview > 0 ? (pageReview - 1) * limitReview : 0;
 
-      const dataMovie = await movie
-        .findOne({ _id: req.params.id })
-        .populate("review")
-        .skip(pageSize * (currentPage - 1))
-        .limit(pageSize)
-        .sort("-created");
+      const reviewData = await review
+        .find({ movie_id: req.params.id })
+        .limit(limitReview)
+        .skip(skipReview)
+        .sort("-createdAt");
 
-      if (!dataMovie) {
+      let data = await movie.findById(req.params.id);
+      data.reviews.push(...reviewData);
+
+      if (!data) {
         return next({ message: "Movie not found", statusCode: 404 });
       }
 
-      res.status(200).json({ dataMovie });
+      res.status(200).json({ data });
     } catch (error) {
       next(error);
     }

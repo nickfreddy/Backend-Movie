@@ -27,9 +27,10 @@ class Users {
         .find({ user_id: req.params.id })
         .limit(limit)
         .skip(skip);
+      // .sort()
 
-      console.log(req.query.limit);
       let data = await user.findById(req.params.id);
+
       data.reviews.push(...reviewData);
 
       if (!data) {
