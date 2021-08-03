@@ -9,7 +9,7 @@ const app = express(); // Make express app
 /* Import routes */
 const auth = require("./routes/auth");
 const movies = require("./routes/movies");
-// const reviews = require("./routes/reviews");
+const reviews = require("./routes/reviews");
 const users = require("./routes/users");
 
 /* Import errorHander */
@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 /* Use the routes */
 app.use("/auth", auth);
 app.use("/movies", movies);
-// app.use("/movies/:id/reviews", reviews);
+app.use("/movies/:movie_id/reviews", reviews);
 app.use("/users", users);
 
 /* If route not found */
