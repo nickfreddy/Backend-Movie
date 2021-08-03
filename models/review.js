@@ -46,8 +46,6 @@ ReviewSchema.statics.getAverageRating = async function (movie_id) {
     },
   ]);
 
-  console.log(this);
-
   try {
     await this.model("movie").findByIdAndUpdate(movie_id, {
       averageRating: obj[0].averageRating.toFixed(2),
