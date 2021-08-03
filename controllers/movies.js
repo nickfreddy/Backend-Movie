@@ -4,13 +4,14 @@ const { movie, review } = require("../models");
 class Movie {
   async createMovie(req, res, next) {
     try {
+      req.body.genres = req.body.genres.split(", ");
       const newMovie = await movie.create(req.body);
 
       const dataMovie = await movie
         .findOne({ _id: newMovie._id })
         .populate("review");
 
-      res.status(201).json({ dataMovie });
+      res.status(201).json({ message: "Successfully created movie" });
     } catch (error) {
       next(error);
     }
@@ -32,9 +33,15 @@ class Movie {
 
   async getDetailMovie(req, res, next) {
     try {
+      const pageSize = parseInt(req.query.limit) || 15;
+      const currentPage = req.query.page;
+
       const dataMovie = await movie
         .findOne({ _id: req.params.id })
-        .populate("review");
+        .populate("review")
+        .skip(pageSize * (currentPage - 1))
+        .limit(pageSize)
+        .sort("-created");
 
       if (!dataMovie) {
         return next({ message: "Movie not found", statusCode: 404 });
@@ -129,7 +136,7 @@ class Movie {
 
       dataMovie.review = await review.findOne({ _id: dataMovie.review });
 
-      return res.status(201).json({ dataMovie });
+      return res.status(201).json({ message: "Successfully updated movie" });
     } catch (error) {
       next(error);
     }
