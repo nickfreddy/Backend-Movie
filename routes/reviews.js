@@ -13,22 +13,23 @@ const {
 // Import controller
 const {
   createReview,
-  getAllReview,
+  getAllReviews,
   getDetailReview,
   updateReview,
   deleteReview,
 } = require("../controllers/reviews");
 
 // Make router
-const router = express.Router();
+// const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 // Make some routes
-router.post("/", createOrUpdateReviewValidator, createReview);
-router.get("/", getAllReview);
+router.post("/", user, /*createOrUpdateReviewValidator,*/ createReview);
+// router.get("/", getAllReviews);
 
-router.get("/:id", getDetailValidator, getDetailReview);
-router.put("/:id", createOrUpdateReviewValidator, updateReview);
-router.delete("/:id", deleteReview);
+// router.get("/:id", getDetailValidator, getDetailReview);
+router.put("/:id", user, /*createOrUpdateReviewValidator,*/ updateReview);
+router.delete("/:id", adminOrUser, deleteReview);
 
 // Exports
 module.exports = router;
