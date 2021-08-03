@@ -30,25 +30,27 @@ const ReviewSchema = new mongoose.Schema({
 });
 
 // Prevent user for submitting more than one review per movie
-ReviewSchema.index({ movie: 1, user: 1 }, { unique: true });
+ReviewSchema.index({ movie_id: 1, user_id: 1 }, { unique: true });
 
 // Static method to get averaga rating
-ReviewSchema.statics.getAverageRating = async function (movieId) {
+ReviewSchema.statics.getAverageRating = async function (movie_id) {
   const obj = await this.aggregate([
     {
-      $match: { movie: movieId },
+      $match: { movie_id: movie_id },
     },
     {
       $group: {
-        _id: "$movie",
+        _id: "$movie_id",
         averageRating: { $avg: "$rating" },
       },
     },
   ]);
 
+  console.log(this);
+
   try {
-    await this.model("movie").findByIdAndUpdate(movieId, {
-      averageRating: obj[0].averageRating,
+    await this.model("movie").findByIdAndUpdate(movie_id, {
+      averageRating: obj[0].averageRating.toFixed(2),
     });
   } catch (e) {
     console.error(e);
@@ -57,12 +59,12 @@ ReviewSchema.statics.getAverageRating = async function (movieId) {
 
 // call getAverageCost after save
 ReviewSchema.post("save", function () {
-  this.constructor.getAverageRating(this.movie);
+  this.constructor.getAverageRating(this.movie_id);
 });
 
 // call getAverageCost after remove
 ReviewSchema.post("remove", function () {
-  this.constructor.getAverageRating(this.movie);
+  this.constructor.getAverageRating(this.movie_id);
 });
 
 module.exports = mongoose.model("review", ReviewSchema);

@@ -25,11 +25,11 @@ exports.createOrUpdateReviewValidator = async (req, res, next) => {
     /* Validate the user input */
     const errorMessages = [];
 
-    if (!mongoose.Types.ObjectId.isValid(req.body.movie)) {
+    if (!mongoose.Types.ObjectId.isValid(req.params.movie_id)) {
       errorMessages.push("movie is not valid");
     }
 
-    if (!mongoose.Types.ObjectId.isValid(req.body.user)) {
+    if (!mongoose.Types.ObjectId.isValid(req.user.user)) {
       errorMessages.push("user is not valid");
     }
 
@@ -37,22 +37,8 @@ exports.createOrUpdateReviewValidator = async (req, res, next) => {
       errorMessages.push("comment cannot be empty");
     }
 
-    if (req.body.rating > 5) {
-      errorMessages.push("Rating not more than 5 stars");
-    }
-
     if (errorMessages.length > 0) {
       return next({ messages: errorMessages, statusCode: 400 });
-    }
-
-    /* Find user and movie is exist or not */
-    const data = await Promise.all([
-      movie.findOne({ _id: req.body.movie }),
-      user.findOne({ _id: req.body.user }),
-    ]);
-
-    if (!data[0] || !data[1]) {
-      errorMessages.push("movie or user not found");
     }
 
     if (errorMessages.length > 0) {

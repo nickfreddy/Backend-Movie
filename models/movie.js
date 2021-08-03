@@ -31,7 +31,7 @@ const movieSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    average_rating: {
+    averageRating: {
       type: mongoose.Schema.Types.Number,
       default: null,
       // get: getRating,
