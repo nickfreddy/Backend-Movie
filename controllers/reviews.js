@@ -58,19 +58,24 @@ class Reviews {
       req.body.user_id = req.user.user;
       req.body.movie_id = req.params.movie_id;
 
-      let data = await review.findOneAndUpdate(
-        {
-          _id: req.params.id,
-        },
-        req.body,
-        {
-          new: true,
-        }
-      );
+      // let data = await review.findOneAndUpdate(
+      //   {
+      //     _id: req.params.id,
+      //   },
+      //   req.body,
+      //   {
+      //     new: true,
+      //   }
+      // );
       // new is to return the updated review data
       // If no new, it will return the old data before updated
 
+      let data = await review.findById(req.params.id);
+
+      await review.updateOne({ _id: req.params.id }, req.body);
+
       // If success
+      await data.save();
       return res.status(201).json({ message: "Review has been updated" });
     } catch (error) {
       next(error);
@@ -80,12 +85,13 @@ class Reviews {
   // Delete review
   async deleteReview(req, res, next) {
     try {
-      const data = await review.findByIdAndDelete({ _id: req.params.id });
+      const data = await review.findById(req.params.id);
 
       if (data.n === 0) {
         return next({ message: "Review not found", statusCode: 404 });
       }
 
+      await data.remove();
       res.status(200).json({ message: "Review has been deleted" });
     } catch (error) {
       next(error);
