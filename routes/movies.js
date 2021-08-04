@@ -2,7 +2,7 @@
 const express = require("express");
 
 // Import auth
-const { admin, user, adminOrUser } = require("../middlewares/auth");
+const { admin } = require("../middlewares/auth");
 
 // Import validator
 const {

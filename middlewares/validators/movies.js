@@ -1,7 +1,6 @@
 // Bayu's Code
 const validator = require("validator");
 const mongoose = require("mongoose");
-const { movie } = require("../../models");
 
 exports.getDetailValidator = async (req, res, next) => {
   try {
