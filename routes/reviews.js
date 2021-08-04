@@ -2,19 +2,17 @@
 const express = require("express");
 
 // Import auth
-const { admin, user, adminOrUser } = require("../middlewares/auth");
+const { user, adminOrSameUser } = require("../middlewares/auth");
 
 // Import validator
 const {
   createOrUpdateReviewValidator,
-  getDetailValidator,
 } = require("../middlewares/validators/reviews");
 
 // Import controller
 const {
   createReview,
   getAllReviews,
-  getDetailReview,
   updateReview,
   deleteReview,
 } = require("../controllers/reviews");
@@ -35,11 +33,11 @@ router.get("/reviews", getAllReviews);
 // router.get("/:id", getDetailValidator, getDetailReview);
 router.put(
   "/movies/:movie_id/reviews/:id",
-  user,
+  adminOrSameUser,
   createOrUpdateReviewValidator,
   updateReview
 );
-router.delete("/movies/:movie_id/reviews/:id", adminOrUser, deleteReview);
+router.delete("/movies/:movie_id/reviews/:id", adminOrSameUser, deleteReview);
 
 // Exports
 module.exports = router;

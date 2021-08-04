@@ -1,7 +1,6 @@
 // Bayu's Code
 const validator = require("validator");
 const mongoose = require("mongoose");
-const { movie } = require("../../models");
 
 exports.getDetailValidator = async (req, res, next) => {
   try {
@@ -55,6 +54,41 @@ exports.movieValidator = async (req, res, next) => {
 
     if (errorMessages.length > 0) {
       return next({ messages: errorMessages, statusCode: 400 });
+    }
+
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.queryValidator = async (req, res, next) => {
+  try {
+    const errorMessages = [];
+
+    if (req.query.page) {
+      if (!validator.isInt(req.query.page)) {
+        errorMessages.push("Page request must be number");
+      }
+    }
+    if (req.query.limit) {
+      if (!validator.isInt(req.query.limit)) {
+        errorMessages.push("Limit request must be number");
+      }
+    }
+    if (req.query.revpage) {
+      if (!validator.isInt(req.query.revpage)) {
+        errorMessages.push("Review request page must be number");
+      }
+    }
+    if (req.query.revlimit) {
+      if (!validator.isInt(req.query.revlimit)) {
+        errorMessages.push("Review request limit must be number");
+      }
+    }
+
+    if (errorMessages.length > 0) {
+      return next({ statusCode: 400, messages: errorMessages });
     }
 
     next();

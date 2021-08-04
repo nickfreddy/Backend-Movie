@@ -9,23 +9,9 @@ class Movie {
 
       const dataMovie = await movie
         .findOne({ _id: newMovie._id })
-        .populate("review");
+        .populate("reviews");
 
       res.status(201).json({ message: "Successfully created movie" });
-    } catch (error) {
-      next(error);
-    }
-  }
-
-  async getAllMovie(req, res, next) {
-    try {
-      const dataMovie = await movie.find();
-
-      if (dataMovie.length === 0) {
-        return next({ message: "Movie not found", statusCode: 404 });
-      }
-
-      res.status(200).json({ dataMovie });
     } catch (error) {
       next(error);
     }
@@ -99,7 +85,7 @@ class Movie {
     }
   }
 
-  async getMoviePagination(req, res, next) {
+  async getAllMovieByPage(req, res, next) {
     try {
       const pageSize = parseInt(req.query.limit) || 15;
       const currentPage = req.query.page;
@@ -121,7 +107,7 @@ class Movie {
 
   async updateMovie(req, res, next) {
     try {
-      let dataMovie = await movie
+      const dataMovie = await movie
         .findOneAndUpdate(
           {
             _id: req.params.id,
@@ -131,13 +117,11 @@ class Movie {
             new: true,
           }
         )
-        .populate("review");
+        .populate("reviews");
 
       if (!dataMovie) {
         return next({ message: "Movie not found", statusCode: 404 });
       }
-
-      dataMovie.review = await review.findOne({ _id: dataMovie.review });
 
       return res.status(201).json({ message: "Successfully updated movie" });
     } catch (error) {

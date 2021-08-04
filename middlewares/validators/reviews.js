@@ -8,18 +8,6 @@ const validator = require("validator");
 const mongoose = require("mongoose");
 const { movie, user } = require("../../models");
 
-exports.getDetailValidator = async (req, res, next) => {
-  try {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      return next({ message: "review id is not valid", statusCode: 400 });
-    }
-
-    next();
-  } catch (error) {
-    next(error);
-  }
-};
-
 exports.createOrUpdateReviewValidator = async (req, res, next) => {
   try {
     /* Validate the user input */
@@ -37,8 +25,8 @@ exports.createOrUpdateReviewValidator = async (req, res, next) => {
       errorMessages.push("comment cannot be empty");
     }
 
-    if (errorMessages.length > 0) {
-      return next({ messages: errorMessages, statusCode: 400 });
+    if (!validator.isInt(req.body.rating, { min: 1, max: 5 })) {
+      errorMessages.push("rating cannot be empty or more than 5");
     }
 
     if (errorMessages.length > 0) {
