@@ -81,7 +81,7 @@ class Users {
       // return res.status(201).json({ data });
 
       return res.status(201).json({
-        message: `User ${req.params.id} detail is updated.`,
+        message: `User ${data.username} detail is updated.`,
       });
     } catch (error) {
       next(error);
@@ -92,10 +92,10 @@ class Users {
   async deleteUser(req, res) {
     try {
       // delete data
-      await user.delete({ _id: req.params.id });
+      let data = await user.delete({ _id: req.params.id });
 
       return res.status(200).json({
-        message: `User ${req.params.id} is deleted successfully`,
+        message: `User ${data.username} is deleted successfully.`,
       });
     } catch (error) {
       next(error);
