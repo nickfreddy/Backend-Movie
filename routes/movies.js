@@ -13,13 +13,12 @@ const {
 // Import controller
 const {
   createMovie,
-  getAllMovie,
   getDetailMovie,
   updateMovie,
   deleteMovie,
   getMovieByTitle,
   getMovieByGenre,
-  getMoviePagination,
+  getAllMovieByPage,
 } = require("../controllers/movies");
 
 // Router
@@ -28,8 +27,7 @@ const router = express.Router();
 // Make some routes
 router
   .route("/")
-  .get(getMoviePagination)
-  .get(getAllMovie)
+  .get(getAllMovieByPage)
   .post(admin, movieValidator, createMovie);
 
 router.route("/search").get(getMovieByTitle);

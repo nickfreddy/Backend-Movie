@@ -17,20 +17,6 @@ class Movie {
     }
   }
 
-  async getAllMovie(req, res, next) {
-    try {
-      const dataMovie = await movie.find();
-
-      if (dataMovie.length === 0) {
-        return next({ message: "Movie not found", statusCode: 404 });
-      }
-
-      res.status(200).json({ dataMovie });
-    } catch (error) {
-      next(error);
-    }
-  }
-
   async getDetailMovie(req, res, next) {
     try {
       const pageReview = req.query.revpage;
@@ -99,7 +85,7 @@ class Movie {
     }
   }
 
-  async getMoviePagination(req, res, next) {
+  async getAllMovieByPage(req, res, next) {
     try {
       const pageSize = parseInt(req.query.limit) || 15;
       const currentPage = req.query.page;

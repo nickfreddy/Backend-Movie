@@ -20,12 +20,12 @@ const movieSchema = new mongoose.Schema(
       type: String,
       required: false,
       default:
-        "https://www.seekpng.com/png/detail/187-1870041_all-these-anonymous-startups-are-interesting-anonymous-logo.png",
+        "https://res.cloudinary.com/pandjibay99/image/upload/v1628009341/DMovie/Default_rzn6o6.jpg",
     },
     trailer: {
       type: String,
       required: false,
-      default: "https://www.youtube.com/watch?v=htqXL94Rza4",
+      default: "https://www.youtube.com",
     },
     synopsis: {
       type: String,
