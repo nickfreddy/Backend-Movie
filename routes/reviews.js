@@ -24,12 +24,22 @@ const {
 const router = express.Router({ mergeParams: true });
 
 // Make some routes
-router.post("/", user, createOrUpdateReviewValidator, createReview);
-// router.get("/", getAllReviews);
+router.post(
+  "/movies/:movie_id/reviews",
+  user,
+  createOrUpdateReviewValidator,
+  createReview
+);
+router.get("/reviews", getAllReviews);
 
 // router.get("/:id", getDetailValidator, getDetailReview);
-router.put("/:id", user, createOrUpdateReviewValidator, updateReview);
-router.delete("/:id", adminOrUser, deleteReview);
+router.put(
+  "/movies/:movie_id/reviews/:id",
+  user,
+  createOrUpdateReviewValidator,
+  updateReview
+);
+router.delete("/movies/:movie_id/reviews/:id", adminOrUser, deleteReview);
 
 // Exports
 module.exports = router;

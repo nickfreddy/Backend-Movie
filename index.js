@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 /* Use the routes */
 app.use("/auth", auth);
 app.use("/movies", movies);
-app.use("/movies/:movie_id/reviews", reviews);
+app.use("/", reviews);
 app.use("/users", users);
 
 /* If route not found */

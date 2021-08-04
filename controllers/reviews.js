@@ -2,25 +2,22 @@
 const { review, user, movie } = require("../models");
 
 class Reviews {
-  // async getAllReviews(req, res, next) {
-  //   try {
-  //     let data = await review.find().populate("movie");
+  async getAllReviews(req, res, next) {
+    try {
+      let data = await review
+        .find()
+        .populate("movie_id", "title")
+        .populate("user_id", ["photo", "username"]);
 
-  //     if (data.length === 0) {
-  //       return next({ message: "Reviews not found", statusCode: 404 });
-  //     }
+      if (data.length === 0) {
+        return next({ message: "Reviews not found", statusCode: 404 });
+      }
 
-  //     for (let i = 0; i < data.length; i++) {
-  //       data[i].movie = await movie.findOne({
-  //         _id: data[i].movie,
-  //       });
-  //     }
-
-  //     res.status(200).json({ data });
-  //   } catch (error) {
-  //     next(error);
-  //   }
-  // }
+      res.status(200).json({ data });
+    } catch (error) {
+      next(error);
+    }
+  }
 
   // async getDetailReview(req, res, next) {
   //   try {
