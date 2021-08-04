@@ -91,7 +91,7 @@ describe("/users PUT", () => {
         photo: "www.testphoto.com",
       });
 
-    expect(response.statusCode).toEqual(500);
+    expect(response.statusCode).toEqual(403);
     expect(response.body).toBeInstanceOf(Object);
   });
 
@@ -195,7 +195,7 @@ describe("/users DEL", () => {
         photo: "www.testphoto.com",
       });
 
-    expect(response.statusCode).toEqual(500);
+    expect(response.statusCode).toEqual(403);
     expect(response.body).toBeInstanceOf(Object);
   });
 
