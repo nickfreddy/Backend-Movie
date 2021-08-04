@@ -7,7 +7,9 @@
     "dev": "set NODE_ENV=development&&npx nodemon index",
     "seed:dev": "set NODE_ENV=development&&node seeders add",
     "seed:dev:remove": "set NODE_ENV=development&&node seeders remove",
-    "test": "set NODE_ENV=test&&jest --testTimeout=20000 --coverage --forceExit"
+    "test": "set NODE_ENV=test&&jest --testTimeout=20000 --coverage --forceExit",
+    "stop": "killall node",
+    "start": "NODE_ENV=production node index > /dev/null 2>&1 &"
   },
   "repository": {
     "type": "git",

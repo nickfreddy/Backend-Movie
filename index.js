@@ -1,10 +1,62 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-}); // Config environment
+});
+
+// Config environment
 const express = require("express"); // Import express
-const fileUpload = require("express-fileupload");
+const fs = require("fs");
+const path = require("path");
+const mongoSanitize = require("express-mongo-sanitize");
+const xss = require("xss-clean");
+const rateLimit = require("express-rate-limit");
+const hpp = require("hpp");
+const helmet = require("helmet");
+const cors = require("cors");
+const morgan = require("morgan");
 
 const app = express(); // Make express app
+
+// CORS
+app.use(cors());
+
+// Sanitize data
+app.use(mongoSanitize());
+
+// Prevent XSS attact
+app.use(xss());
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 mins
+  max: 100,
+});
+
+app.use(limiter);
+
+// Prevent http param pollution
+app.use(hpp());
+
+// Use helmet
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+
+if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test") {
+  app.use(morgan("dev"));
+} else {
+  // create a write stream (in append mode)
+  let accessLogStream = fs.createWriteStream(
+    path.join(__dirname, "access.log"),
+    {
+      flags: "a",
+    }
+  );
+
+  // setup the logger
+  app.use(morgan("combined", { stream: accessLogStream }));
+}
 
 /* Import routes */
 const auth = require("./routes/auth");
