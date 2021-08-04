@@ -5,12 +5,7 @@ const { storage } = require("../cloudinary");
 const upload = multer({ storage });
 
 // Import auth
-const {
-  admin,
-  user,
-  adminOrUser,
-  adminOrSameUser,
-} = require("../middlewares/auth");
+const { adminOrSameUser } = require("../middlewares/auth");
 
 // Import validator
 const {
