@@ -107,7 +107,7 @@ class Movie {
 
   async updateMovie(req, res, next) {
     try {
-      let dataMovie = await movie
+      const dataMovie = await movie
         .findOneAndUpdate(
           {
             _id: req.params.id,
@@ -117,13 +117,11 @@ class Movie {
             new: true,
           }
         )
-        .populate("review");
+        .populate("reviews");
 
       if (!dataMovie) {
         return next({ message: "Movie not found", statusCode: 404 });
       }
-
-      dataMovie.review = await review.findOne({ _id: dataMovie.review });
 
       return res.status(201).json({ message: "Successfully updated movie" });
     } catch (error) {
