@@ -16,8 +16,6 @@ let otherUserToken = "";
 const randomHexKey = "610495fa3f542a2a09759573";
 
 beforeAll(async () => {
-  //   data = await Promise.all([user.find()]);
-
   const mainUser = await user.create({
     username: "Main User",
     email: faker.internet.email(),
