@@ -8,18 +8,6 @@ const validator = require("validator");
 const mongoose = require("mongoose");
 const { movie, user } = require("../../models");
 
-exports.getDetailValidator = async (req, res, next) => {
-  try {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      return next({ message: "review id is not valid", statusCode: 400 });
-    }
-
-    next();
-  } catch (error) {
-    next(error);
-  }
-};
-
 exports.createOrUpdateReviewValidator = async (req, res, next) => {
   try {
     /* Validate the user input */
