@@ -82,11 +82,6 @@ app.use(
 /* Make public folder for static file */
 app.use(express.static("public"));
 
-// DELETE THIS BEFORE DEPLOYING
-app.get("/", (req, res) => {
-  res.send("THIS IS HOME PAGE");
-});
-
 /* Use the routes */
 app.use("/auth", auth);
 app.use("/movies", movies);

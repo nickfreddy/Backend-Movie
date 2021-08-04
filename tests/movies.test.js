@@ -13,8 +13,8 @@ let adminToken = "";
 let movieId = "";
 
 let title = "";
-let page = "2";
-let limit = "2";
+let page = "1";
+let limit = "1";
 let revPage = "2";
 let revLimit = "2";
 
