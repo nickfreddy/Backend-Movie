@@ -47,7 +47,7 @@ const userSchema = new mongoose.Schema(
       createdAt: "createdAt",
       updatedAt: "updatedAt",
     },
-    toJSON: { getters: true },
+    // toJSON: { getters: true },
   }
 );
 

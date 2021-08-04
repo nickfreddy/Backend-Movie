@@ -49,7 +49,7 @@ const movieSchema = new mongoose.Schema(
       updatedAt: "updatedAt",
     },
     toObject: { getters: true },
-    toJSON: { getters: true, versionKey: false },
+    // toJSON: { getters: true, versionKey: false },
   }
 );
 
