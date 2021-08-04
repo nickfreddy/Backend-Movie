@@ -37,8 +37,8 @@ exports.createOrUpdateReviewValidator = async (req, res, next) => {
       errorMessages.push("comment cannot be empty");
     }
 
-    if (errorMessages.length > 0) {
-      return next({ messages: errorMessages, statusCode: 400 });
+    if (!validator.isInt(req.body.rating, { min: 1, max: 5 })) {
+      errorMessages.push("rating cannot be empty or more than 5");
     }
 
     if (errorMessages.length > 0) {
