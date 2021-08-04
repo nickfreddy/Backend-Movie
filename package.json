@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development npx nodemon index",
-    "seed:dev": "NODE_ENV=development node seeders add",
-    "seed:dev:remove": "NODE_ENV=development node seeders remove",
-    "test": "NODE_ENV=test jest --testTimeout=20000 --coverage --forceExit"
+    "test": "NODE_ENV=test jest --testTimeout=20000 --coverage --forceExit",
+    "stop": "killall node",
+    "start": "NODE_ENV=production node index > /dev/null 2>&1 &"
   },
   "repository": {
     "type": "git",
