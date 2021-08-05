@@ -25,6 +25,7 @@ class Movie {
 
       const reviewData = await review
         .find({ movie_id: req.params.id })
+        .populate("user_id", ["photo", "username"])
         .limit(limitReview)
         .skip(skipReview)
         .sort("-createdAt");

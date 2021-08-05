@@ -11,9 +11,15 @@ class Users {
 
       const reviewData = await review
         .find({ user_id: req.params.id })
+        .populate("movie_id", [
+          "poster",
+          "title",
+          "release_year",
+          "averageRating",
+        ])
         .limit(limit)
-        .skip(skip);
-      // .sort()
+        .skip(skip)
+        .sort("-createdAt");
 
       let data = await user.findById(req.params.id);
 
