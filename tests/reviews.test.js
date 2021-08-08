@@ -223,7 +223,7 @@ describe("/reviews POST", () => {
         .delete(`/movies/${movieId}/reviews/brokenid`)
         .set("Authorization", `Bearer ${userToken}`);
 
-      expect(response.statusCode).toEqual(403);
+      expect(response.statusCode).toEqual(500);
       expect(response.body).toBeInstanceOf(Object);
     });
 

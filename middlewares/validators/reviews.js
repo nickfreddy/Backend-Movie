@@ -15,7 +15,6 @@ exports.createOrUpdateReviewValidator = async (req, res, next) => {
         .findById(req.params.id)
         .select("-_id user_id");
       data.push(author.user_id.toString());
-      console.log({ data });
     }
 
     /* Validate the user input */
@@ -63,7 +62,6 @@ exports.deleteReviewValidator = async (req, res, next) => {
         .findById(req.params.id)
         .select("-_id user_id");
       data.push(author.user_id.toString());
-      console.log({ data });
     }
 
     if (req.params.id && !data.includes(req.user.user)) {
