@@ -4,25 +4,25 @@ stages:
   - deploy
 
 # Test job
-# test:
-#   # Docker image
-#   image: node:14-alpine
-#   # Attach Test job to Test stage
-#   stage: test
-#   # Config to use GitLab Shared Runner with Executor Docker
-#   tags:
-#     - docker
-#   script:
-#     - echo "MONGO_URI"=$MONGO_URI_TEST > .env.test
-#     - echo "JWT_SECRET"=$JWT_SECRET >> .env.test
-#     - echo "CLOUDINARY_CLOUD_NAME"=$CLOUDINARY_CLOUD_NAME >> .env.test
-#     - echo "CLOUDINARY_CLOUD_KEY"=$CLOUDINARY_CLOUD_NAME >> .env.test
-#     - echo "CLOUDINARY_CLOUD_SECRET"=$CLOUDINARY_CLOUD_NAME >> .env.test
-#     - npm i
-#     - npm run test
-#   # Defines the names of branches and tags the job runs for
-#   only:
-#     - production
+test:
+  # Docker image
+  image: node:14-alpine
+  # Attach Test job to Test stage
+  stage: test
+  # Config to use GitLab Shared Runner with Executor Docker
+  tags:
+    - docker
+  script:
+    - echo "MONGO_URI"=$MONGO_URI_TEST > .env.test
+    - echo "JWT_SECRET"=$JWT_SECRET >> .env.test
+    - echo "CLOUDINARY_CLOUD_NAME"=$CLOUDINARY_CLOUD_NAME >> .env.test
+    - echo "CLOUDINARY_CLOUD_KEY"=$CLOUDINARY_CLOUD_NAME >> .env.test
+    - echo "CLOUDINARY_CLOUD_SECRET"=$CLOUDINARY_CLOUD_NAME >> .env.test
+    - npm i
+    - npm run test
+  # Defines the names of branches and tags the job runs for
+  only:
+    - production
 
 # Deploy job
 deploy:
