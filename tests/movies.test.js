@@ -249,7 +249,7 @@ describe("/Search Movie", () => {
 
 describe("/Select Movie by Genre", () => {
   it("Get Movie's Genre", async () => {
-    const response = await request(app).get("/movies/genres/romance");
+    const response = await request(app).get("/movies/genres/action");
 
     expect(response.statusCode).toEqual(200);
     expect(response.body).toBeInstanceOf(Object);
@@ -257,7 +257,7 @@ describe("/Select Movie by Genre", () => {
 
   it("Get Movie's Genre by Page", async () => {
     const response = await request(app).get(
-      `/movies/genres/romance?page=${page}`
+      `/movies/genres/action?page=${page}`
     );
 
     expect(response.statusCode).toEqual(200);
@@ -266,7 +266,7 @@ describe("/Select Movie by Genre", () => {
 
   it("Get Movie's Genre by Limit", async () => {
     const response = await request(app).get(
-      `/movies/genres/romance?limit=${limit}`
+      `/movies/genres/action?limit=${limit}`
     );
 
     expect(response.statusCode).toEqual(200);
@@ -275,7 +275,7 @@ describe("/Select Movie by Genre", () => {
 
   it("Get Movie's Genre by Page and Limit", async () => {
     const response = await request(app).get(
-      `/movies/genres/romance?page=${page}&limit=${limit}`
+      `/movies/genres/action?page=${page}&limit=${limit}`
     );
 
     expect(response.statusCode).toEqual(200);
