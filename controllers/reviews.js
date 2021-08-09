@@ -15,6 +15,7 @@ class Reviews {
 
       res.status(200).json({ data });
     } catch (error) {
+      /* istanbul ignore next */
       next(error);
     }
   }
@@ -28,6 +29,7 @@ class Reviews {
 
       res.status(201).json({ message: "review has been submitted" });
     } catch (error) {
+      /* istanbul ignore next */
       next(error);
     }
   }

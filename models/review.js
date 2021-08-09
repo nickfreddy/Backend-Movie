@@ -51,6 +51,7 @@ ReviewSchema.statics.getAverageRating = async function (movie_id) {
       averageRating: obj[0].averageRating.toFixed(2),
     });
   } catch (e) {
+    /* istanbul ignore next */
     console.error(e);
   }
 };

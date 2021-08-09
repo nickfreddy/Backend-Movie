@@ -10,6 +10,7 @@ class User {
 
       res.status(200).json({ _id: req.user._id, token });
     } catch (error) {
+      /* istanbul ignore next */
       next(error);
     }
   }

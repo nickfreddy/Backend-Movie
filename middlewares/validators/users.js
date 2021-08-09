@@ -11,6 +11,7 @@ exports.getDetailValidator = async (req, res, next) => {
 
     next();
   } catch (error) {
+    /* istanbul ignore next */
     next(error);
   }
 };
@@ -36,6 +37,7 @@ exports.createOrUpdateUserValidator = async (req, res, next) => {
 
     next();
   } catch (error) {
+    /* istanbul ignore next */
     next(error);
   }
 };

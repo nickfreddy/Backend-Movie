@@ -47,6 +47,7 @@ exports.createOrUpdateReviewValidator = async (req, res, next) => {
 
     next();
   } catch (error) {
+    /* istanbul ignore next */
     next(error);
   }
 };

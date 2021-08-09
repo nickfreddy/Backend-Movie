@@ -13,6 +13,7 @@ class Movie {
 
       res.status(201).json({ message: "Successfully created movie" });
     } catch (error) {
+      /* istanbul ignore next */
       next(error);
     }
   }
@@ -82,6 +83,7 @@ class Movie {
 
       res.status(200).json({ dataMovie });
     } catch (error) {
+      /* istanbul ignore next */
       next(error);
     }
   }

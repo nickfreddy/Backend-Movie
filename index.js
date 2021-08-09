@@ -43,6 +43,7 @@ app.use(
   })
 );
 
+/* istanbul ignore next */
 if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test") {
   app.use(morgan("dev"));
 } else {
@@ -93,6 +94,7 @@ app.all("*", (req, res, next) => {
   try {
     next({ message: "Endpoint not found", statusCode: 404 });
   } catch (error) {
+    /* istanbul ignore next */
     next(error);
   }
 });
@@ -101,6 +103,7 @@ app.all("*", (req, res, next) => {
 app.use(errorHandler);
 
 /* Run the server */
+/* istanbul ignore next */
 if (process.env.NODE_ENV !== "test") {
   app.listen(3000, () => console.log(`Server running on 3000`));
 }
