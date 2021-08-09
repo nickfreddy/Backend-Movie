@@ -83,6 +83,7 @@ passport.use(
 
         return done(null, data, { message: "Login success!" });
       } catch (e) {
+        /* istanbul ignore next */
         return done(e, false, { message: "User can't be created" });
       }
     }

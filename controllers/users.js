@@ -57,6 +57,7 @@ class Users {
         message: `User ${data.username} detail is updated.`,
       });
     } catch (error) {
+      /* istanbul ignore next */
       next(error);
     }
   }
@@ -65,12 +66,14 @@ class Users {
   async deleteUser(req, res, next) {
     try {
       // delete data
+      await review.deleteMany({ user_id: req.params.id });
       let data = await user.delete({ _id: req.params.id });
 
       return res.status(200).json({
         message: `User ${data.username} is deleted successfully.`,
       });
     } catch (error) {
+      /* istanbul ignore next */
       next(error);
     }
   }

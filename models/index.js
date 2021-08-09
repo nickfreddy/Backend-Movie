@@ -11,6 +11,7 @@ mongoose
     useFindAndModify: false, // to use updateOne and updateMany
   })
   .then(() => console.log("MongoDB Connected"))
+  /* istanbul ignore next */
   .catch((err) => console.log(err));
 
 exports.movie = require("./movie");
