@@ -22,7 +22,7 @@ test:
     - npm run test
   # Defines the names of branches and tags the job runs for
   only:
-    - production
+    - dockerize
 
 # Deploy job
 deploy:
@@ -31,19 +31,19 @@ deploy:
   stage: deploy
   # Config to use our Runner with Executor Shell
   tags:
-    - server
+    - demovie-dockerize
   script:
     # Only copy changed files to project folder
-    - cp -r -u * $PROJECT_DIR
-    - cd $PROJECT_DIR
+    - cp -r -u * $PROJECT_DIR_DOCKER
+    - cd $PROJECT_DIR_DOCKER
     - echo "MONGO_URI"=$MONGO_URI_PRODUCTION > .env.production
     - echo "JWT_SECRET"=$JWT_SECRET >> .env.production
     - echo "CLOUDINARY_CLOUD_NAME"=$CLOUDINARY_CLOUD_NAME >> .env.production
     - echo "CLOUDINARY_KEY"=$CLOUDINARY_KEY >> .env.production
     - echo "CLOUDINARY_SECRET"=$CLOUDINARY_SECRET >> .env.production
-    - npm i --only=prod
-    # Restart NodeJS service
-    - npm run stop || true
-    - npm run start
+    # - DELETE PREVIOUS CONTAINER
+    # - DELETE PREVIOUS IMAGE
+    - docker build -t demovie .
+    - docker run -p 3001:3001 -d demovie
   only:
-    - production
+    - dockerize

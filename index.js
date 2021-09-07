@@ -89,6 +89,10 @@ app.use("/movies", movies);
 app.use("/", reviews);
 app.use("/users", users);
 
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "hello world, from demovie" });
+});
+
 /* If route not found */
 app.all("*", (req, res, next) => {
   try {
@@ -105,7 +109,7 @@ app.use(errorHandler);
 /* Run the server */
 /* istanbul ignore next */
 if (process.env.NODE_ENV !== "test") {
-  app.listen(3000, () => console.log(`Server running on 3000`));
+  app.listen(3001, () => console.log(`Server running on 3001`));
 }
 
 module.exports = app;
