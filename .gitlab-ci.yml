@@ -1,49 +1,49 @@
-# We have 2 stage Test and Deploy
-stages:
-  - test
-  - deploy
+# # We have 2 stage Test and Deploy
+# stages:
+#   - test
+#   - deploy
 
-# Test job
-test:
-  # Docker image
-  image: node:14-alpine
-  # Attach Test job to Test stage
-  stage: test
-  # Config to use GitLab Shared Runner with Executor Docker
-  tags:
-    - docker
-  script:
-    - echo "MONGO_URI"=$MONGO_URI_TEST > .env.test
-    - echo "JWT_SECRET"=$JWT_SECRET >> .env.test
-    - echo "CLOUDINARY_CLOUD_NAME"=$CLOUDINARY_CLOUD_NAME >> .env.test
-    - echo "CLOUDINARY_CLOUD_KEY"=$CLOUDINARY_CLOUD_NAME >> .env.test
-    - echo "CLOUDINARY_CLOUD_SECRET"=$CLOUDINARY_CLOUD_NAME >> .env.test
-    - npm i
-    - npm run test
-  # Defines the names of branches and tags the job runs for
-  only:
-    - dockerize
+# # Test job
+# test:
+#   # Docker image
+#   image: node:14-alpine
+#   # Attach Test job to Test stage
+#   stage: test
+#   # Config to use GitLab Shared Runner with Executor Docker
+#   tags:
+#     - docker
+#   script:
+#     - echo "MONGO_URI"=$MONGO_URI_TEST > .env.test
+#     - echo "JWT_SECRET"=$JWT_SECRET >> .env.test
+#     - echo "CLOUDINARY_CLOUD_NAME"=$CLOUDINARY_CLOUD_NAME >> .env.test
+#     - echo "CLOUDINARY_CLOUD_KEY"=$CLOUDINARY_CLOUD_NAME >> .env.test
+#     - echo "CLOUDINARY_CLOUD_SECRET"=$CLOUDINARY_CLOUD_NAME >> .env.test
+#     - npm i
+#     - npm run test
+#   # Defines the names of branches and tags the job runs for
+#   only:
+#     - dockerize
 
-# Deploy job
-deploy:
-  type: deploy
-  # Attach Deploy job to Deploy stage
-  stage: deploy
-  # Config to use our Runner with Executor Shell
-  tags:
-    - demovie-dockerize
-  script:
-    # Only copy changed files to project folder
-    - cp -r -u * $PROJECT_DIR_DOCKER
-    - cd $PROJECT_DIR_DOCKER
-    - echo "MONGO_URI"=$MONGO_URI_PRODUCTION > .env.production
-    - echo "JWT_SECRET"=$JWT_SECRET >> .env.production
-    - echo "CLOUDINARY_CLOUD_NAME"=$CLOUDINARY_CLOUD_NAME >> .env.production
-    - echo "CLOUDINARY_KEY"=$CLOUDINARY_KEY >> .env.production
-    - echo "CLOUDINARY_SECRET"=$CLOUDINARY_SECRET >> .env.production
-    # - DELETE PREVIOUS CONTAINER
-    # - DELETE PREVIOUS IMAGE
-    - docker build -t demovie .
-    - docker run -p 3001:3001 -d demovie
-  only:
-    - dockerize
+# # Deploy job
+# deploy:
+#   type: deploy
+#   # Attach Deploy job to Deploy stage
+#   stage: deploy
+#   # Config to use our Runner with Executor Shell
+#   tags:
+#     - demovie-dockerize
+#   script:
+#     # Only copy changed files to project folder
+#     - cp -r -u * $PROJECT_DIR_DOCKER
+#     - cd $PROJECT_DIR_DOCKER
+#     - echo "MONGO_URI"=$MONGO_URI_PRODUCTION > .env.production
+#     - echo "JWT_SECRET"=$JWT_SECRET >> .env.production
+#     - echo "CLOUDINARY_CLOUD_NAME"=$CLOUDINARY_CLOUD_NAME >> .env.production
+#     - echo "CLOUDINARY_KEY"=$CLOUDINARY_KEY >> .env.production
+#     - echo "CLOUDINARY_SECRET"=$CLOUDINARY_SECRET >> .env.production
+#     # - DELETE PREVIOUS CONTAINER
+#     # - DELETE PREVIOUS IMAGE
+#     - docker build -t demovie .
+#     - docker run -p 3001:3001 -d demovie
+#   only:
+#     - dockerize
