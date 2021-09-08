@@ -5,3 +5,4 @@ package-lock.json
 .env.production
 coverage
 .vscode
+.gitlab-ci.yml
