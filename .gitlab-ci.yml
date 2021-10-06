@@ -43,7 +43,7 @@ deploy:
     - echo "CLOUDINARY_SECRET"=$CLOUDINARY_SECRET >> .env.production
     - npm i --only=prod
     # Restart NodeJS service
-    - npm run stop || true
+    # - npm run stop || true
     - npm run start
   only:
     - production
